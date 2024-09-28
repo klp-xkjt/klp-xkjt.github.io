@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>保存输入内容到Cookies</title>
+<script>
+// 当页面加载完毕时，尝试从Cookies中读取内容并填充到输入框
+document.addEventListener('DOMContentLoaded', function() {
+    var inputField = document.getElementById('inputField');
+    var savedValue = getCookie('savedInput');
+    if (savedValue) {
+        inputField.value = savedValue;
+    }
+});
+
+// 设置Cookies的函数
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+// 获取Cookies的函数
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+// 为按钮添加点击事件，将输入框的内容保存到Cookies
+function saveInputToCookie() {
+    var inputField = document.getElementById('inputField');
+    setCookie('savedInput', inputField.value, 30); // 保存30天
+}
+</script>
+</head>
+<body>
+    <input type="text" id="inputField" placeholder="请输入内容">
+    <button id="saveButton" onclick="saveInputToCookie()">保存内容</button>
+</body>
+</html>
