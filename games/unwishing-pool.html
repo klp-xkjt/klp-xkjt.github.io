@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>弃愿池模拟器</title>
+    <style>
+        .title {
+            text-align: center;
+            font-size: 20px;
+        }
+        .ts {
+            text-align: center;
+            font-size: 15px;
+        }
+        .js {
+            text-align: center;
+            font-size: 12px;
+        }
+        .sys {
+            text-align: center;
+        }
+        .sys1 {
+            background-image: url('https://i.ibb.co/t8S825s/money.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: none;
+            outline: none;
+            color: grey;
+            transition: background-color 0.3s;
+            width: 60px;
+            height: 60px;
+        }
+        .sys1:active {
+            background-color: grey;
+        }
+        .dq {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <p class="title"><s>弃</s>祈愿池模拟器</p>
+    <p class="ts">仅供游玩，请勿与现实挂钩</p>
+    <p class="js">一个祈愿池需要50铁粒，铁粒获得的数量介于10到75（售价的150%）<br>默认有100铁粒，看看你可以获得多少铁粒吧！</p>
+    <div class="sys">
+        <button class="sys1" onclick="sys1()">试一试</button>
+    </div>
+    <div class="dq">
+        当前铁粒：<span id="currentIron">100</span>
+        <br>
+        已抽次数：<span id="drawTimes">0</span>
+        <br>
+        上次获得：<span id="lastObtained">0</span>
+        <br>
+        已盈利了：<span id="profit">0</span>
+        <br>
+        已亏损了：<span id="loss">0</span>
+        <br>
+    </div>
+    <script>
+        function sys1() {
+            // 获取页面元素
+            var currentIron = document.getElementById('currentIron');
+            var drawTimes = document.getElementById('drawTimes');
+            var lastObtained = document.getElementById('lastObtained');
+            var profit = document.getElementById('profit');
+            var loss = document.getElementById('loss');
+
+            // 生成10到75之间的随机数
+            var obtainedIron = Math.floor(Math.random() * (75 - 10 + 1)) + 10;
+
+            // 更新当前铁粒数量
+            var newIron = parseInt(currentIron.textContent) - 50 + obtainedIron;
+            currentIron.textContent = newIron;
+
+            // 更新已抽次数
+            var newDrawTimes = parseInt(drawTimes.textContent) + 1;
+            drawTimes.textContent = newDrawTimes;
+
+            // 更新上次获得的铁粒数
+            lastObtained.textContent = obtainedIron;
+
+            // 判断是盈利还是亏损，并更新相应数值
+            if (obtainedIron >= 50) {
+                var newProfit = parseInt(profit.textContent) + (obtainedIron - 50);
+                profit.textContent = newProfit;
+            } else {
+                var newLoss = parseInt(loss.textContent) + (50 - obtainedIron);
+                loss.textContent = newLoss;
+            }
+        }
+    </script>
+</body>
+</html>
+ 
