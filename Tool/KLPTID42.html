@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>苦力怕TID跳转器</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* 修改为列布局 */
+            background-image: url('https://i.ibb.co/BGnrQ5x/233759w8e8tott7o84o861.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .KLPTID {
+            font-size: 30px;
+            font-weight: border;
+            color: white;
+        }
+        .mtom {
+            font-size: 15px;
+            font-weight: border;
+            color: white;
+            margin-top: 10px;
+        }
+        .divs {
+            display: flex; /* 设置为横向布局 */
+            width: 60%; /* 与.inputbox宽度一致 */
+            justify-content: space-between; /* 平均分布三个div */
+            margin-bottom: 10px; /* 与.inputbox的间距 */
+        }
+        .div {
+            background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+            /*padding: 10px 20px;*/
+            color: #fff;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgb(255, 255, 255);
+            font-size: 12px;
+            width: 40%;
+            height: 40px;
+            transition: border-color 0.2s;
+            transition: background-color 0.2s;
+        }
+        .div:active {
+            border-color: rgb(168, 230, 255);
+            background-color: white;
+            color: black;
+        }
+        .inputbox {
+            margin-top: 5px;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            color: #fff;
+            backdrop-filter: blur(5px);
+            width: 70%;
+            height: 200;
+            border: 2px solid white;
+            border-radius: 10px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+        .inputbox p {
+            margin-top: 30px;
+        }
+        .inputbox input[type="text"] {
+            width: 60%;
+            height: 30px;
+            margin-top: 10px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0);
+            border-style: solid;
+            border: 4px solid white;
+            font-size: 20px;
+            color: white;
+            overflow-x: auto;
+            transition: border-color 0.3s ease-in-out;
+        }
+        .inputbox input[type="text"]:focus {
+            outline: none;
+            border-style: solid;
+            border-color: skyblue;
+            font-size: 20px;
+            color: white;
+            transition: border 0.3s ease-in-out;
+        }
+        .inputbox input[type="text"]::placeholder {
+            color: white;
+            font-size: 20px;
+        }
+        .inputbox button {
+            width: 40%;
+            height: 50px; 
+            margin-top: 20px;
+            padding: 10px;
+            outline: none;
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+            background-color: rgba(255, 255, 255,0);
+            transition: background-color 0.4s;
+        }
+        .inputbox button:active {
+            background-color: white;
+        }
+        .about {
+            border: none;
+            font-size: 15px;
+            color: white;
+        }
+        .window1 {
+            background-color: rgba(255, 255, 255,0.5);
+            font-size: 15px;
+            width: 80%;
+            overflow-wrap: break-word;
+            position: fixed;
+            top: auto;
+            left: auto;
+            border: 1px solid white;
+        }
+        .wabb {
+            margin-top: 5px;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        .oth {
+            margin-top: 8px;
+            margin-left: 5px;
+            font-size: 15px;
+        }
+        .off {
+            font-size: 16px;
+            font-weight: bold;
+            color: royalblue;
+            text-align: right;
+            margin-right: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (min-width: 600px) and (max-width: 1200px){
+            body {
+                background-image: url('https://i.ibb.co/Yj6KcRW/231445unuigcssusfvkgq6.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            .KLPTID {
+                font-size: 30px;
+            }
+            .mtom {
+                font-size: 20px;
+            }
+            .divs {
+                display: flex; /* 设置为横向布局 */
+                width: 30%; /* 与.inputbox宽度一致 */
+                justify-content: space-between; /* 平均分布三个div */
+                margin-bottom: 30px; /* 与.inputbox的间距 */
+            }
+            .div {
+                height: 40px;
+                font-size: 12px;
+            }
+            .inputbox {
+                margin-top: 10px;
+                width: 40%;
+                height: 400px;
+            }
+            .inputbox p {
+                margin-top: 20px;
+                font-size: 20px;
+            }
+            .inputbox input[type="text"] {
+                width: 60%;
+                height: 30px;
+            }
+            .about {
+                font-size: 20px;
+            }
+            .window1 {
+                width: 40%;
+            }
+        }
+        @media (min-width: 1200px) {
+            body {
+                background-image: url('https://i.ibb.co/Yj6KcRW/231445unuigcssusfvkgq6.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            .KLPTID {
+                font-size: 30px;
+            }
+            .mtom {
+                font-size: 20px;
+            }
+            .divs {
+                width: 30%;
+            }
+            .div {
+                height: 40px;
+                font-size: 12px;
+            }
+            .inputbox {
+                width: 30%;
+                height: 20%;
+            }
+            .window1 {
+                width: 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p class="KLPTID">KLPTID4.2</p>
+    <p class="mtom">↓点击切换模式↓</p>
+    <div class="divs">
+        <div id="div1" class="div">[基础]TID跳转</div>
+        <div id="div2" class="div">[高级]TID跳转</div>
+        <div id="div3" class="div">[基础]页面跳转</div>
+    </div>
+    <div class="divs">
+        <div id="div4" class="div">[高级]页面跳转</div>
+        <div id="div5" class="div">用户uid跳转</div>
+        <div id="div6" class="div">查看某用户警告记录</div>
+    </div>
+    <div class="divs">
+        <div id="div7" class="div">查看某主题的点赞人</div>
+        <div id="div8" class="div">查看某用户空间的帖子</div>
+        <div id="div9" class="div">查看某用户空间的回复</div>
+    </div>
+    <div class="inputbox">
+        <div class="tid1">
+            <p>TID跳转——基础版本</p>
+            <input type="text" id="tid-inp1" placeholder="请输入TID">
+            <button id="tz1" onclick="tz1()">跳转</button>
+            <p>使用提示：在输入框输入TID即可</p>
+        </div>
+        <div id="tid2" class="tid2 hidden">
+            <p>TID跳转——高级版本</p>
+            <input type="text" id="tid-inp21" placeholder="请输入TID">
+            <input type="text" id="tid-inp22" placeholder="请输入浏览模式">
+            <button id="tz2" onclick="tz2()">跳转</button>
+            <p>使用提示：在第一个输入框输入TID，第二个输入框输入 2 或 no </br>前者是以手机模式访问，后者是以电脑模式访问</p>
+        </div>
+        <div id="tid3" class="tid3 hidden">
+            <p>页面跳转——基础</p>
+            <input type="text" id="tid-inp31" placeholder="请输入TID">
+            <input type="text" id="tid-inp32" placeholder="请输入页面">
+            <button id="tz3" onclick="tz3()">跳转</button>
+            <p>使用提示：在输入框输入TID，在第二个输入框输入该TID所在帖子的页数</p>
+        </div>
+        <div id="tid4" class="tid4 hidden">
+            <p>页面跳转——高级</p>
+            <input type="text" id="tid-inp41" placeholder="请输入TID">
+            <input type="text" id="tid-inp42" placeholder="请输入页面">
+            <input type="text" id="tid-inp43" placeholder="[可选]输入所在页面第X个回复">
+            <input type="text" id="tid-inp44" placeholder="请输入浏览模式">
+            <button id="tz4" onclick="tz4()">跳转</button>
+            <p>使用提示：前两个输入框同基础版本，第三个输入框输入页面的第X个回复，不选填1。</br>第四个 填2 或 no，前者手机模式访问，后者电脑模式访问</p>
+        </div>
+        <div id="tid5" class="tid5 hidden">
+            <p>用户UID跳转</p>
+            <input type="text" id="tid-inp51" placeholder="请输入用户UID" >
+            <input type="text" id="tid-inp52" placeholder="请输入浏览模式">
+            <button id="tz5" onclick="tz5()">跳转</button>
+            <p>使用提示：在输入框输入用户UID，第二个输入 2 或 no，分别是手机和电脑模式访问</p>
+        </div>
+        <div id="tid6" class="tid6 hidden">
+            <p>查看用户警告次数</p>
+            <input type="text" id="tid-inp6" placeholder="请输入用户UID">
+            <button id="tz6" onclick="tz6()">跳转</button>
+            <p>使用提示：在输入框输入用户UID即可访问</p>
+        </div>        
+        <div id="tid7" class="tid7 hidden">
+            <p>查看某主题的点赞人</p>
+            <input type="text" id="tid-inp7" placeholder="请输入帖子TID">
+            <button id="tz7" onclick="tz7()">跳转</button>
+            <p>使用提示：在输入框输入TID即可</p>
+        </div>
+        <div id="tid8" class="tid8 hidden">
+            <p>查看某用户空间的帖子</p>
+            <input type="text" id="tid-inp81" placeholder="请输入用户UID">
+            <input type="text" id="tid-inp82" placeholder="请输入空间帖子页数">
+            <input type="text" id="tid-inp83" placeholder="请输入浏览模式">
+            <button id="tz8" onclick="tz8()">跳转</button>
+            <p>使用提示：输入用户UID、页数以及浏览模式（2/no）</p>
+        </div>
+        <div id="tid9" class="tid9 hidden">
+            <p>查看某用户空间的帖子</p>
+            <input type="text" id="tid-inp91" placeholder="请输入用户UID">
+            <input type="text" id="tid-inp92" placeholder="请输入空间回复页数">
+            <input type="text" id="tid-inp93" placeholder="请输入浏览模式">
+            <button id="tz9" onclick="tz9()">跳转</button>
+            <p>使用提示：输入用户UID、页数以及浏览模式（2/no）</p>
+        </div>
+    </div>
+    <div>
+        <p id="about" class="about" onclick="about()">关于[可点]</p>
+    </div>
+    <div class="window1 hidden">
+        <p class="wabb">关于 About</p>
+        <p class="oth">
+            更新日志：尽量优化所有屏幕的适配，优化代码
+            </br>
+            版本：4(New2)(4.2) 最终版
+            </br>
+            作者：星空晶体
+            </br>
+            Github仓库地址：<a href="https://github.com/klp-xkjt/klp-xkjt.github.io/blob/main/Tool/KLPTID42.html">https://github.com/klp-xkjt/klp-xkjt.github.io/blob/main/Tool/KLPTID42.html</a>
+            </br>
+            <p style="padding: 5px;font-weight: bold;color: red">声明：本工具由苦力怕论坛用户制作，非官方工具，是个人爱好，请明申</p>
+        </p>
+        </br>
+        <p id="off" class="off">关闭</p>
+    </div>
+    <img src="https://badges.toozhao.com/badges/01J8BT5JRV8NX8680D1AAK57Z7/green.svg">
+    </br>
+    <script>
+        const about1 = document.querySelector('.window1')
+        function showDiv(index) {
+            for (let i = 1; i <= 9; i++) {
+                let tid = document.querySelector('.tid' + i);
+                if (i === index) {
+                    tid.classList.remove('hidden');
+                } else {
+                    tid.classList.add('hidden');
+                }
+            }
+        }
+        /*优化上方代码*/
+        for (let i = 1; i <= 9; i++) {
+            document.getElementById('div' + i).addEventListener('click', function() {
+            showDiv(i);
+            });
+        }
+        function jumpTo(url) {
+            if (url) {
+                window.location.href = url;
+            } else {
+                alert("请填写全部内容");
+            }
+        }
+        function tz1() {
+            const tidinp1 = document.getElementById("tid-inp1").value;
+            jumpTo(tidinp1 ? `https://klpbbs.com/thread-${tidinp1}-1-1.html` : null);
+        }
+        function tz2() {
+            const tidinp21 = document.getElementById("tid-inp21").value;
+            const tidinp22 = document.getElementById("tid-inp22").value;
+            let mobileParam = tidinp22 === '2' ? '2' : 'no';
+            jumpTo(tidinp21 ? `https://klpbbs.com/forum.php?mod=viewthread&tid=${tidinp21}&page=1&extra=&mobile=${mobileParam}` : null);
+        }
+        function tz3() {
+            const tidinp31 = document.getElementById("tid-inp31").value;
+            const tidinp32 = document.getElementById("tid-inp32").value;
+            jumpTo(tidinp31 ? `https://klpbbs.com/thread-${tidinp31}-${tidinp32}-1.html` : null);
+        }
+        function tz4() {
+            const tidinp41 = document.getElementById("tid-inp41").value;
+            const tidinp42 = document.getElementById("tid-inp42").value;
+            const tidinp43 = document.getElementById("tid-inp43").value;
+            const tidinp44 = document.getElementById("tid-inp44").value;
+            jumpTo(tidinp41 ? `https://klpbbs.com/thread-${tidinp41}-${tidinp42}-${tidinp43}.html?mobile=${tidinp44}` : null);
+        }
+        function tz5() {
+            const tidinp51 = document.getElementById("tid-inp51").value;
+            const tidinp52 = document.getElementById("tid-inp52").value;
+            let mobileParam2 = tidinp52 === '2' ? '2' : 'no';
+            jumpTo(tidinp51 ? `https://klpbbs.com/home.php?mod=space&uid=${tidinp51}&do=profile&mobile=${mobileParam2}` : null);
+        }
+        function tz6() {
+            const tidinp6 = document.getElementById("tid-inp6").value;
+            jumpTo(tidinp6 ? `https://klpbbs.com/forum.php?mod=misc&action=viewwarning&tid=1&uid=${tidinp6}` : null);
+        }
+        function tz7() {
+            const tidinp7 = document.getElementById("tid-inp7").value;
+            jumpTo(tidinp7 ? `https://klpbbs.com/misc.php?op=recommend&tid=${tidinp7}&mod=faq` : null);
+        }
+        function tz8() {
+            const tidinp81 = document.getElementById("tid-inp81").value;
+            const tidinp82 = document.getElementById("tid-inp82").value;
+            const tidinp83 = document.getElementById("tid-inp83").value;
+            jumpTo(tidinp81 ? `https://klpbbs.com/home.php?mod=space&uid=${tidinp81}&do=thread&page=${tidinp82}view=me&from=space&mobile=${tidinp83}` : null);
+        }
+        function tz9() {
+            const tidinp91 = document.getElementById("tid-inp91").value;
+            const tidinp92 = document.getElementById("tid-inp92").value;
+            const tidinp93 = document.getElementById("tid-inp93").value;
+            jumpTo(tidinp91 ? `https://klpbbs.com/home.php?mod=space&uid=${tidinp91}&do=thread&page=${tidinp92}view=me&type=reply&from=space&mobile=${tidinp93}` : null);
+        }
+        document.getElementById('about').addEventListener('click', function() {
+            about1.classList.remove('hidden')
+        });
+        document.getElementById('off').addEventListener('click', function() {
+            about1.classList.add('hidden')
+        });
+    </script>
+</body>
+</html>
