@@ -1,0 +1,45 @@
+@font-face {
+    font-family: myFont;
+    src: url('../font/font.ttf');
+}
+
+body {
+    font-family: myFont;
+    background-image: url('../img/background.png');
+    background-attachment: fixed;
+    /* 添加这一行，使背景固定 */
+    background-size: contain;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 80%;
+    /*max-width: 800px;*/
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.card h1 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #07A7F8;
+}
+
+.card h3 {
+    text-align: center;
+    margin-top: 10px;
+    color: #07E3F8;
+}
+
+.card p {
+    margin: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
