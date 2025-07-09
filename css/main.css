@@ -88,7 +88,7 @@ a:active {
 }
 
 /* 媒体查询，针对不同屏幕尺寸调整样式 */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
     /* 在屏幕宽度小于 600px 时应用的样式 */
     .card {
         width: 90%; /* 增加卡片宽度，适应小屏幕 */
